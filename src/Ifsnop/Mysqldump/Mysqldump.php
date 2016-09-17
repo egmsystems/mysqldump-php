@@ -624,6 +624,9 @@ class Mysqldump
 
         foreach($columns as $key => $col) {
             $types = $this->typeAdapter->parseColumnType($col);
+            if($col["Extra"]=="VIRTUAL GENERATED"){
+            	continue;
+            }
             $columnTypes[$col['Field']] = array(
                 'is_numeric'=> $types['is_numeric'],
                 'is_blob' => $types['is_blob'],

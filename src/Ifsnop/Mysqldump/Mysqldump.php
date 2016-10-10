@@ -1522,8 +1522,8 @@ class TypeAdapterMysql extends TypeAdapterFactory
             $triggerStmtReplaced = $triggerStmt;
         }
 
-        $ret .= "DELIMITER ;;" . PHP_EOL .
-            $triggerStmtReplaced . "*/;;" . PHP_EOL .
+        $ret .= "DELIMITER $$" . PHP_EOL .
+            $triggerStmtReplaced . "*/$$" . PHP_EOL .
             "DELIMITER ;" . PHP_EOL . PHP_EOL;
         return $ret;
     }
@@ -1541,8 +1541,8 @@ class TypeAdapterMysql extends TypeAdapterFactory
             $row['Procedure'] . "` */;" . PHP_EOL .
             "/*!40101 SET @saved_cs_client     = @@character_set_client */;" . PHP_EOL .
             "/*!40101 SET character_set_client = " . $dumpSettings['default-character-set'] . " */;" . PHP_EOL .
-            "DELIMITER ;;" . PHP_EOL .
-            $procedureStmt . " ;;" . PHP_EOL .
+            "DELIMITER $$" . PHP_EOL .
+            $procedureStmt . " $$" . PHP_EOL .
             "DELIMITER ;" . PHP_EOL .
             "/*!40101 SET character_set_client = @saved_cs_client */;" . PHP_EOL . PHP_EOL;
 
